@@ -1,0 +1,57 @@
+{% extends "weathermap/base.html" %}
+{% load static %}
+
+{% block title %}World Weather Map{% endblock %}
+
+{% block content %}
+
+<div class="controls">
+    <div>
+        <label for="citySearch">Search for a city</label>
+        <input
+            id="citySearch"
+            type="search"
+            placeholder="London, Tokyo, Paris..."
+            autocomplete="off"
+        >
+    </div>
+
+    <div>
+        <label for="temperatureUnit">
+            Temperature unit
+        </label>
+
+        <select id="temperatureUnit">
+            <option value="C">Celsius (°C)</option>
+            <option value="F">Fahrenheit (°F)</option>
+        </select>
+    </div>
+
+    <button id="resetMap" type="button">
+        Reset map
+    </button>
+
+    <span id="cityCount">
+        Loading cities...
+    </span>
+</div>
+
+<div class="map-container">
+    <div id="map"></div>
+
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading weather data...</p>
+    </div>
+</div>
+
+<p class="map-help">
+    Click a city to view current conditions
+    and the three-day forecast.
+</p>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'weathermap/js/map.js' %}"></script>
+{% endblock %}
